@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <a routerLink="">Home</a>
+</div>
+<div class="row py-1 mt-4">
+    <div class="col-md-6 offset-md-3">
+        <!-- Form -->
+        <b>Teacher Signup</b>
+        <fieldset class="form-group border p-3">
+            <form [formGroup]="teacherSignupForm" (ngSubmit)="signUp()">
+                <div class="row mb-3">
+                    <div class="col-3 col-md-4 text-start">
+                        <label for="" class="form-label">Full Name</label>
+                    </div>
+                    <div class="col-9 col-md-8 text-center">
+                        <input placeholder="abc@gmail.com" type="text" class="form-input m-0 w-100 rounded border-1" formControlName="fullname" required />
+                        <span class="text-danger" *ngIf="teacherSignupForm.controls['fullname'].dirty && teacherSignupForm.hasError('required', 'fullname')">*Name is required</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 col-md-4 text-start">
+                        <label for="" class="form-label">Mobile</label>
+                    </div>
+                    <div class="col-9 col-md-8 text-center">
+                        <input placeholder="12345" type="text" class="form-input m-0 w-100 rounded border-1" formControlName="mobile" required />
+                        <span class="text-danger" *ngIf="teacherSignupForm.controls['mobile'].dirty && teacherSignupForm.hasError('required', 'mobile')">*Mobile is required</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 col-md-4 text-start">
+                        <label for="" class="form-label">Email</label>
+                    </div>
+                    <div class="col-9 col-md-8 text-center">
+                        <input placeholder="12345" type="email" class="form-input m-0 w-100 rounded border-1" formControlName="email" required />
+                        <span class="text-danger" *ngIf="teacherSignupForm.controls['email'].dirty && teacherSignupForm.hasError('required', 'email')">*Email is required</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 col-md-4 text-start">
+                        <label for="" class="form-label">Password</label>
+                    </div>
+                    <div class="col-9 col-md-8 text-center">
+                        <input placeholder="12345" type="password" class="form-input m-0 w-100 rounded border-1" formControlName="password" required />
+                        <span class="text-danger" *ngIf="teacherSignupForm.controls['password'].dirty && teacherSignupForm.hasError('required', 'password')">*Password is required</span>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-2">
+                    <div class="col">
+                        <button [disabled]="!teacherSignupForm.valid" type="submit" class="btn btn-primary px-2 mx-2">Signup</button>
+                        <button class="btn btn-danger" type="reset" onclick="">Clear</button>
+                    </div>
+                </div>
+                <p>Already have an account <a routerLink="/teacher-login" class="btn">Login</a></p>
+            </form>
+        </fieldset>
+    </div>
+</div>

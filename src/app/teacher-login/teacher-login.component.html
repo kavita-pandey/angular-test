@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<div class="container"><br>
+    <h6 class="text-center">Teacher Login</h6>
+<div class="row py-1 mt-4">
+    <div class="col-md-6 offset-md-3">
+        <fieldset class="form-group border p-3">
+            <form [formGroup]="teacherLoginForm" (ngSubmit)="loginForm()">
+                <div class="row mb-3">
+                    <div class="col-3 col-md-4 text-start">
+                        <label for="" class="form-label">Email</label>
+                    </div>
+                    <div class="col-9 col-md-8 text-center">
+                        <input placeholder="abc@gmail.com" type="email" class="form-input m-0 w-100 rounded border-1" formControlName="email" required />
+                        <span class="text-danger" *ngIf="teacherLoginForm.controls['email'].dirty && teacherLoginForm.hasError('required', 'email')">*Email is required</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 col-md-4 text-start">
+                        <label for="" class="form-label">Password</label>
+                    </div>
+                    <div class="col-9 col-md-8 text-center">
+                        <input placeholder="12345" type="password" class="form-input m-0 w-100 rounded border-1" formControlName="password" required />
+                        <span class="text-danger" *ngIf="teacherLoginForm.controls['password'].dirty && teacherLoginForm.hasError('required', 'password')">*Password is required</span>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-2">
+                    <div class="col">
+                        <button [disabled]="!teacherLoginForm.valid" type="submit" class="btn btn-primary px-2 mx-2">Login</button>
+                        <button class="btn btn-danger" type="reset" onclick="">Clear</button>
+                    </div>
+                </div>
+                    <p>Not have an account <a routerLink="/teacher-signup" class="btn">Signup</a></p>
+            </form>
+        </fieldset>
+    </div>
+</div>
+</div>

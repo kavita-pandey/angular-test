@@ -1,0 +1,113 @@
+<app-header></app-header>
+<br>
+<div class="container mb-4">
+    <div class="row mb-3 justify-content-around">
+        <div class="col ">
+            <h6>Teacher Dashboard</h6>
+          </div>
+      <div class="col text-end">
+        <button (click)="clickAddResult()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Result
+          </button>
+      </div>
+    </div>
+  
+    <div>
+      <p>Total {{teacherData.length}} Students</p>
+      <fieldset class="form-group border p-3">
+        <!-- <legend  class="w-auto px-2">Total 4 Students</legend><hr> -->
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th scope="col">Roll Number</th>
+              <th scope="col">Name</th>
+              <th scope="col">DOB</th>
+              <th scope="col">Score</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of teacherData">
+              <th scope="row">{{row.rollnumber}}</th>
+              <td>{{row.name}}</td>
+              <td>{{row.dob}}</td>
+              <td>{{row.score}}</td>
+              <td> 
+                  <button (click)="onEdit(row)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info btn-sm">Edit</button>
+                <button (click)="deleteResult(row)" class="btn btn-danger btn-sm mx-2">Delete</button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </div>
+  </div>
+
+  <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" *ngIf="showAdd" (click)="postResult()">Add Students Result</h5>
+          <h5 class="modal-title" id="exampleModalLabel" *ngIf="showUpdate" (click)="updateResult()">Edit Students Result</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <form [formGroup]="formValue">
+                <div class="row mb-3">
+                  <div class="col-3 col-md-4 text-start">
+                    <label for="" class="form-label">Roll Number</label>
+                  </div>
+                  <div class="col-9 col-md-8 text-center">
+                    <input type="text" class="form-input m-0 w-100 rounded border-1" formControlName="rollnumber" required />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-3 col-md-4 text-start">
+                    <label for="" class="form-label">Name</label>
+                  </div>
+                  <div class="col-9 col-md-8 text-center">
+                    <input type="text" class="form-input m-0 w-100 rounded border-1" formControlName="name" required />
+                  </div>
+                </div>
+      
+                <div class="row mb-3">
+                  <div class="col-3 col-md-4 text-start">
+                    <label for="Date" class="form-label">DOB</label>
+                  </div>
+                  <div class="col-9 col-md-8 text-center">
+                    <input type="date" class="form-input m-0 w-100 rounded border-1" formControlName="dob" required />
+                  </div>
+                </div>
+      
+                <div class="row mb-3">
+                  <div class="col-3 col-md-4 text-start">
+                    <label for="" class="form-label">Score</label>
+                  </div>
+                  <div class="col-9 col-md-8 text-center">
+                    <input type="text" class="form-input m-0 w-100 rounded border-1" formControlName="score" required />
+                  </div>
+                </div>
+      
+                <!-- <div class="row mb-3 mt-2">
+                  <div class="col">
+                    <button type="submit" class="btn btn-primary px-2 mx-2">Submit</button>
+                    <button class="btn btn-danger" type="reset" onclick="">Clear</button>
+                  </div>
+                </div> -->
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" *ngIf="showAdd" (click)="postResult()" class="btn btn-primary">Add Result</button>
+          <button type="button" *ngIf="showUpdate" (click)="updateResult()" class="btn btn-primary">Update Result</button>
+        </div>
+      </div>
+    </div>
+  </div>

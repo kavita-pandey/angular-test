@@ -1,0 +1,37 @@
+{
+  "posts": [
+    {
+      "rollnumber": "205",
+      "name": "kavita",
+      "dob": "2022-05-28",
+      "score": "1000",
+      "id": 2
+    },
+    {
+      "rollnumber": "105",
+      "name": "bhavya",
+      "dob": "1998-01-01",
+      "score": "256",
+      "id": 3
+    },
+    {
+      "rollnumber": "19mca001",
+      "name": "surbhi",
+      "dob": "2022-05-04",
+      "score": "986",
+      "id": 4
+    }
+  ],
+  "teacherSignup": [
+    {
+      "fullname": "anjali",
+      "mobile": "98547788",
+      "email": "asb@gmail.com",
+      "password": "12345",
+      "id": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
